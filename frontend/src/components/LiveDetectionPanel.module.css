@@ -1,0 +1,299 @@
+/* LiveDetectionPanel — real-time right panel */
+
+.panel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f8f7ff;
+}
+
+/* ── Shared section header ── */
+.sectionHead {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 14px 9px;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(124,58,237,0.08);
+  flex-shrink: 0;
+}
+.sectionTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #18103a;
+  flex: 1;
+}
+.liveCount {
+  font-size: 10px; font-weight: 700;
+  background: #7c3aed; color: #fff;
+  padding: 2px 8px; border-radius: 10px;
+}
+.allCount {
+  font-size: 10px; font-weight: 700;
+  background: #ede9ff; color: #7c3aed;
+  padding: 2px 8px; border-radius: 10px;
+}
+
+/* Live pulsing dot in header */
+.liveDot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #ef4444;
+  display: inline-block;
+  animation: liveBlink 1.1s ease infinite;
+  flex-shrink: 0;
+}
+@keyframes liveBlink {
+  0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(239,68,68,0.5); }
+  50%      { opacity: 0.7; box-shadow: 0 0 0 5px rgba(239,68,68,0); }
+}
+
+/* ══════════════════════════════════════
+   LIVE NOW section
+   ══════════════════════════════════════ */
+.liveSection {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 55%;
+  min-height: 120px;
+  overflow: hidden;
+}
+
+.liveList {
+  overflow-y: auto;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #ddd6fe transparent;
+}
+.liveList::-webkit-scrollbar { width: 3px; }
+.liveList::-webkit-scrollbar-thumb { background: #ddd6fe; border-radius: 2px; }
+
+.liveEmpty {
+  text-align: center;
+  font-size: 11px;
+  color: #9b8ec4;
+  padding: 18px 10px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Live card — entire card is clickable link */
+.liveCard {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid rgba(124,58,237,0.14);
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(76,29,149,0.08);
+  animation: liveCardIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  border-left: 3px solid var(--cc, #7c3aed);
+}
+.liveCard:hover {
+  border-color: var(--cc, #7c3aed);
+  box-shadow: 0 4px 18px rgba(76,29,149,0.16);
+  transform: translateY(-1px);
+}
+@keyframes liveCardIn {
+  from { opacity: 0; transform: translateX(14px) scale(0.97); }
+  to   { opacity: 1; transform: translateX(0)    scale(1); }
+}
+
+/* Image column */
+.liveCardImg {
+  width: 80px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  background: #f4f2ff;
+}
+.liveCardImgEl {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.3s;
+}
+.liveCard:hover .liveCardImgEl { transform: scale(1.06); }
+.liveCardImgFallback {
+  width: 100%; min-height: 80px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Live pulse dot on image */
+.livePulseDot {
+  position: absolute;
+  bottom: 5px; right: 5px;
+  width: 8px; height: 8px; border-radius: 50%;
+  box-shadow: 0 0 0 2px #fff;
+  animation: liveBlink 1.1s ease infinite;
+}
+
+/* Text body */
+.liveCardBody {
+  flex: 1;
+  padding: 9px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+}
+.liveCardCat {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+}
+.liveCardName {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px; font-weight: 700; color: #18103a;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.liveCardBrand { font-size: 10px; color: #9b8ec4; }
+.liveCardPrice {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px; font-weight: 800; color: var(--cc, #7c3aed);
+}
+.liveCardShop {
+  font-size: 11px; font-weight: 700; color: var(--cc, #7c3aed);
+  text-decoration: underline; text-underline-offset: 2px;
+  margin-top: 2px; display: inline-block;
+}
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: rgba(124,58,237,0.1);
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════
+   ALL OBJECTS timeline section
+   ══════════════════════════════════════ */
+.timelineSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.timelineList {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 0 16px;
+  scrollbar-width: thin;
+  scrollbar-color: #ddd6fe transparent;
+}
+.timelineList::-webkit-scrollbar { width: 3px; }
+.timelineList::-webkit-scrollbar-thumb { background: #ddd6fe; border-radius: 2px; }
+
+.timelineEmpty {
+  text-align: center;
+  font-size: 12px;
+  color: #9b8ec4;
+  padding: 30px;
+}
+
+/* Timeline row */
+.timelineRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  transition: background 0.15s;
+  border-left: 3px solid transparent;
+  animation: rowFadeIn 0.2s ease both;
+  text-align: left;
+}
+.timelineRow:hover {
+  background: rgba(124,58,237,0.04);
+  border-left-color: rgba(124,58,237,0.3);
+}
+.timelineRowActive {
+  background: rgba(124,58,237,0.06) !important;
+  border-left-color: var(--cc, #7c3aed) !important;
+}
+@keyframes rowFadeIn {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Row thumbnail */
+.tlThumb {
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f4f2ff;
+  border: 1px solid rgba(124,58,237,0.1);
+}
+.tlThumbImg { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tlThumbFallback {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Row info */
+.tlInfo { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.tlLabel {
+  font-size: 12px; font-weight: 600; color: #18103a;
+  text-transform: capitalize; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.tlProduct { font-size: 10px; color: #9b8ec4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Mini timeline bar inside row */
+.tlBar {
+  position: relative;
+  height: 2px;
+  background: #ede9ff;
+  border-radius: 1px;
+  overflow: visible;
+  margin-top: 3px;
+}
+.tlBarFill {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  top: 50%; transform: translateY(-50%);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.8);
+}
+
+/* Row right side */
+.tlRight { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0; }
+.tlTime {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; color: #9b8ec4; font-weight: 600;
+}
+.tlActiveBadge {
+  font-size: 8px; font-weight: 800; letter-spacing: 0.08em;
+  background: var(--cc, #7c3aed); color: #fff;
+  padding: 2px 6px; border-radius: 6px;
+  text-transform: uppercase;
+  animation: liveBlink 1.1s ease infinite;
+}
+
+/* Non-shoppable badge (person/animal rows) */
+.tlNonShoppable {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: #f1f5f9;
+  color: #94a3b8;
+  padding: 2px 5px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}

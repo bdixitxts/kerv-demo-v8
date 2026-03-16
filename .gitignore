@@ -1,0 +1,23 @@
+node_modules/
+.env
+
+# backend runtime data
+backend/data/
+backend/uploads/
+
+# frontend build
+dist/
+build/
+
+# AI models
+*.pt
+*.onnx
+
+# videos
+*.mp4
+*.mov
+*.avi
+
+# system files
+.DS_Store
+Thumbs.db

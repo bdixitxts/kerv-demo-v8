@@ -1,0 +1,141 @@
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: all var(--transition);
+  min-width: 180px;
+  max-width: 210px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--card-color) 40%, transparent);
+  background: var(--bg-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.card.active {
+  border-color: color-mix(in srgb, var(--card-color) 60%, transparent);
+  background: color-mix(in srgb, var(--card-color) 8%, var(--bg-panel));
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--card-color) 15%, transparent);
+}
+
+.colorBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--card-color);
+  opacity: 0.7;
+  border-radius: 3px 0 0 3px;
+  transition: opacity var(--transition);
+}
+
+.card.active .colorBar { opacity: 1; }
+
+.iconArea {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.icon {
+  display: block;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.activePulse {
+  position: absolute;
+  top: -3px; right: -3px;
+  width: 8px; height: 8px;
+  background: var(--card-color);
+  border-radius: 50%;
+  animation: pulse-ring 1.2s ease infinite;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.category {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--card-color);
+  margin-bottom: 2px;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brand {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--card-color);
+}
+
+.conf {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 4px;
+}
+
+.timeRange {
+  position: absolute;
+  bottom: 4px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.card:hover .timeRange { opacity: 1; }
+
+.timeDot {
+  width: 4px;
+  height: 4px;
+  background: var(--card-color);
+  border-radius: 50%;
+}

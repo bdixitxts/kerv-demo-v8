@@ -1,0 +1,7 @@
+# KERV v4.1 — AI pipeline
+# YOLO12: ultralytics >= 8.3.86
+# YOLO11: ultralytics >= 8.3.0
+# Falls back automatically if older version installed
+ultralytics>=8.3.86
+opencv-python>=4.9.0
+numpy>=1.26.0

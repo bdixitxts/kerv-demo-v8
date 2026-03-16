@@ -1,0 +1,411 @@
+/* ================================================================
+   ObjectPanel v5 — white/violet theme
+   ================================================================ */
+
+.panel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f8f7ff;
+}
+
+/* ── Header / tabs ── */
+.header {
+  display: flex;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(124,58,237,0.1);
+  flex-shrink: 0;
+}
+
+.tabBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 13px 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #9b8ec4;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.tabBtn:hover { color: #5b4e8a; background: #faf8ff; }
+.tabActive {
+  color: #7c3aed;
+  border-bottom-color: #7c3aed;
+  background: #faf8ff;
+}
+
+.tabIcon { font-size: 13px; }
+
+.tabBadge {
+  font-size: 10px;
+  font-weight: 700;
+  background: #ede9ff;
+  color: #7c3aed;
+  padding: 1px 7px;
+  border-radius: 10px;
+}
+.tabBadgePurple {
+  background: #7c3aed;
+  color: #fff;
+}
+
+/* ══════════════════════════════════════
+   VIEW 1 — Object Selection List
+   ══════════════════════════════════════ */
+.objectView {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Toolbar */
+.listToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid rgba(124,58,237,0.07);
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.selectAllBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #5b4e8a;
+  cursor: pointer;
+  padding: 4px 0;
+}
+.selectAllBtn:hover { color: #7c3aed; }
+
+.selCount {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  color: #7c3aed;
+  background: rgba(124,58,237,0.08);
+  padding: 2px 9px;
+  border-radius: 10px;
+}
+
+/* Checkbox */
+.checkbox {
+  width: 18px; height: 18px;
+  border-radius: 5px;
+  border: 1.5px solid rgba(124,58,237,0.3);
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.checkboxOn {
+  background: var(--cc, #7c3aed);
+  border-color: var(--cc, #7c3aed);
+}
+
+/* List */
+.list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 0 80px; /* bottom space for CTA */
+  scrollbar-width: thin;
+  scrollbar-color: #ddd6fe transparent;
+}
+.list::-webkit-scrollbar { width: 3px; }
+.list::-webkit-scrollbar-thumb { background: #ddd6fe; border-radius: 2px; }
+
+/* Row */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-bottom: 1px solid rgba(124,58,237,0.05);
+  animation: rowIn 0.25s ease both;
+}
+.row:hover { background: #faf8ff; }
+.rowChecked { background: rgba(124,58,237,0.04); }
+
+@keyframes rowIn {
+  from { opacity: 0; transform: translateX(10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Thumbnail */
+.rowThumb {
+  width: 48px; height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(124,58,237,0.12);
+  background: #f4f2ff;
+}
+.rowThumbImg { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rowThumbFallback {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+
+/* Info */
+.rowInfo { flex: 1; min-width: 0; }
+.rowLabel {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px; font-weight: 700; color: #18103a;
+  text-transform: capitalize; margin-bottom: 2px;
+}
+.rowMeta { display: flex; flex-direction: column; gap: 1px; margin-bottom: 4px; }
+.rowCat {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.03em; text-transform: capitalize;
+}
+.rowProduct { font-size: 10px; color: #9b8ec4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.confBar { height: 3px; background: #ede9ff; border-radius: 2px; overflow: hidden; flex: 1; }
+.confFill { height: 100%; border-radius: 2px; }
+.confValue { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; color: #9b8ec4; }
+.rowConf { display: flex; align-items: center; gap: 5px; }
+
+/* Price */
+.rowPrice {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px; font-weight: 700; color: #18103a;
+  white-space: nowrap; flex-shrink: 0;
+}
+
+/* Stack CTA */
+.stackCta {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 14px 14px 18px;
+  background: linear-gradient(to top, #f8f7ff 70%, transparent);
+  pointer-events: none;
+}
+.stackBtn {
+  width: 100%;
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px; font-weight: 700;
+  padding: 13px;
+  cursor: pointer;
+  pointer-events: all;
+  transition: all 0.18s;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.35);
+  letter-spacing: 0.02em;
+}
+.stackBtn:hover {
+  box-shadow: 0 6px 28px rgba(124,58,237,0.5);
+  transform: translateY(-1px);
+}
+
+/* ══════════════════════════════════════
+   VIEW 2 — Stacked product cards
+   ══════════════════════════════════════ */
+.stackView {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.stackHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px 9px;
+  background: #fff;
+  border-bottom: 1px solid rgba(124,58,237,0.08);
+  flex-shrink: 0;
+}
+.stackTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px; font-weight: 700; color: #5b4e8a;
+}
+.editBtn {
+  font-size: 11px; font-weight: 600; color: #7c3aed;
+  background: rgba(124,58,237,0.08);
+  border: 1px solid rgba(124,58,237,0.2);
+  border-radius: 7px; padding: 4px 10px;
+  cursor: pointer; font-family: 'Outfit', sans-serif;
+}
+.editBtn:hover { background: rgba(124,58,237,0.14); }
+
+.stackList {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 12px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #ddd6fe transparent;
+}
+.stackList::-webkit-scrollbar { width: 3px; }
+.stackList::-webkit-scrollbar-thumb { background: #ddd6fe; border-radius: 2px; }
+
+/* ── Product card ── */
+.card {
+  border-radius: 14px;
+  border: 1px solid rgba(124,58,237,0.12);
+  background: #ffffff;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(76,29,149,0.07);
+  animation: cardIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  position: relative;
+}
+.card:hover {
+  border-color: rgba(124,58,237,0.3);
+  box-shadow: 0 6px 24px rgba(76,29,149,0.14);
+  transform: translateY(-2px);
+}
+.cardActive {
+  border-color: rgba(124,58,237,0.45) !important;
+  box-shadow: 0 6px 28px rgba(124,58,237,0.2) !important;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateX(18px) scale(0.97); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* Left accent bar */
+.cardAccent {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0;
+  border-radius: 14px 0 0 14px;
+  transition: width 0.2s;
+}
+.cardActive .cardAccent { width: 4px; }
+
+/* Hero image */
+.cardHero {
+  position: relative;
+  height: 120px;
+  overflow: hidden;
+  background: #f4f2ff;
+}
+.cardHeroImg {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.3s;
+}
+.card:hover .cardHeroImg { transform: scale(1.04); }
+.cardHeroFallback {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Live pulse ring on active card hero */
+.cardLivePulse {
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--pc, #7c3aed);
+  border-radius: 0;
+  animation: livePulse 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes livePulse {
+  0%,100% { opacity: 0.8; }
+  50%      { opacity: 0.3; }
+}
+
+/* Category badge */
+.cardCat {
+  position: absolute;
+  top: 8px; left: 8px;
+  display: flex; align-items: center; gap: 4px;
+  background: rgba(10,5,25,0.58);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 9px; font-weight: 600; letter-spacing: 0.05em;
+  padding: 3px 8px; border-radius: 6px;
+  backdrop-filter: blur(5px);
+  border: 1px solid color-mix(in srgb, var(--cc, #7c3aed) 50%, transparent);
+  text-transform: capitalize;
+}
+
+/* Card body */
+.cardBody {
+  padding: 11px 14px 13px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.cardObjectLabel {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #9b8ec4;
+}
+.cardName {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px; font-weight: 700; color: #18103a; line-height: 1.2;
+}
+.cardBrand { font-size: 11px; color: #9b8ec4; }
+
+.cardFooter {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 9px; padding-top: 9px;
+  border-top: 1px solid rgba(124,58,237,0.07);
+}
+.cardPrice {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px; font-weight: 800; color: #18103a;
+}
+.shopBtn {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+  background: var(--cc, #7c3aed);
+  color: #fff;
+  border-radius: 8px; padding: 6px 14px;
+  text-decoration: none; transition: all 0.18s; display: inline-block;
+}
+.shopBtn:hover { opacity: 0.86; transform: translateY(-1px); }
+.noProduct {
+  font-size: 10px; color: #c4b5fd; font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── Empty states ── */
+.emptyState {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px; padding: 48px 24px; text-align: center;
+}
+.emptyIcon { font-size: 30px; color: #c4b5fd; }
+.emptyText {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px; font-weight: 700; color: #5b4e8a;
+}
+.emptySub { font-size: 12px; color: #9b8ec4; line-height: 1.5; }
+.goSelectBtn {
+  margin-top: 8px;
+  background: rgba(124,58,237,0.08);
+  border: 1px solid rgba(124,58,237,0.25);
+  color: #7c3aed; border-radius: 9px;
+  font-size: 12px; font-weight: 600;
+  padding: 8px 18px; cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.18s;
+}
+.goSelectBtn:hover { background: rgba(124,58,237,0.14); }

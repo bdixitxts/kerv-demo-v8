@@ -1,0 +1,120 @@
+/* OverlayEngine v5 — pure pulse dots */
+
+.root {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  overflow: visible;
+}
+
+/* ── Dot button ── */
+.dot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  pointer-events: all;
+  padding: 0;
+  animation: appear 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Rings — stagger the pulse */
+.ring1, .ring2, .ring3 {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--dc, #7c3aed);
+  animation: pulse 2.4s ease-out infinite;
+  opacity: 0;
+}
+.ring2 { animation-delay: 0.8s; }
+.ring3 { animation-delay: 1.6s; }
+
+@keyframes pulse {
+  0%   { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* Core dot */
+.core {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--dc, #7c3aed);
+  box-shadow:
+    0 0 0 2.5px rgba(255,255,255,0.9),
+    0 0 10px var(--dc, #7c3aed);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+/* Hover */
+.dotHovered .core {
+  transform: translate(-50%, -50%) scale(1.5);
+  box-shadow:
+    0 0 0 2.5px rgba(255,255,255,1),
+    0 0 18px var(--dc, #7c3aed);
+}
+.dotHovered .ring1 { animation-duration: 1.4s; }
+
+/* Active (selected in stack) */
+.dotActive .core {
+  background: #ffffff;
+  box-shadow:
+    0 0 0 3px var(--dc, #7c3aed),
+    0 0 20px var(--dc, #7c3aed);
+}
+.dotActive .ring1,
+.dotActive .ring2,
+.dotActive .ring3 {
+  border-width: 2px;
+  opacity: 0;
+  animation: pulse 1.6s ease-out infinite;
+}
+
+/* Hover label pill — no full card, just a name */
+.hoverLabel {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: rgba(15, 5, 35, 0.82);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid color-mix(in srgb, var(--dc, #7c3aed) 60%, transparent);
+  pointer-events: none;
+  animation: tipIn 0.15s ease;
+  backdrop-filter: blur(6px);
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+}
+
+@keyframes tipIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.hoverLabel::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(15, 5, 35, 0.82);
+}

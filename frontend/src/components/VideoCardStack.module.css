@@ -1,0 +1,218 @@
+/*
+  VideoCardStack v3
+  Matches the KERV demo screenshots precisely.
+
+  Layout:
+  ┌─────────────────────────────────────────────────────┐
+  │ VIDEO                                               │
+  │  ┌────────┐                                         │
+  │  │  img   │◄── 12px margin from left edge           │
+  │  │  [×]   │                                         │
+  │  └────────┘                                         │
+  │  ┌────────┐ ← hover ─► ┌────────┬──────────────┐   │
+  │  │  img   │             │ img   │ Name          │   │
+  │  │  [×]   │             │       │ Desc          │   │
+  │  └────────┘             │       │ Shop Now      │   │
+  │                         └────────┴──────────────┘   │
+  └─────────────────────────────────────────────────────┘
+*/
+
+/* ── Stack container ── */
+.stack {
+  position: absolute;
+  top: 14px;
+  left: 12px;          /* margin from left edge, not flush */
+  z-index: 20;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: calc(100% - 72px);
+  overflow: hidden;
+}
+
+/* ── Entry: card + popup row ── */
+.entry {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  pointer-events: all;
+  position: relative;
+  /* Stagger the fade-in so multiple cards don't all pop at once */
+  animation: cardIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(-10px) scale(0.93); }
+  to   { opacity: 1; transform: translateY(0)     scale(1); }
+}
+
+/* ── Collapsed card (always-visible square) ── */
+.card {
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+  margin-left: 12px;
+  position: relative;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 4px 16px rgba(0,0,0,0.30),
+    0 1px  4px rgba(0,0,0,0.14);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  /* Full rounded corners on all sides — NOT flush to edge */
+  border: 2px solid rgba(255,255,255,0.88);
+}
+.entry:hover .card {
+  box-shadow:
+    0 6px 24px rgba(0,0,0,0.40),
+    0 2px  8px rgba(0,0,0,0.18);
+  transform: scale(1.02);
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardFallback {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #f4f2ff, #ede9ff);
+}
+.cardIcon { font-size: 30px; }
+
+/* × dismiss button */
+.dismissBtn {
+  position: absolute;
+  top: 5px; right: 5px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(10,6,24,0.65);
+  border: 1.5px solid rgba(255,255,255,0.6);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.15s;
+  z-index: 5;
+}
+.dismissBtn:hover {
+  background: rgba(239,68,68,0.88);
+  border-color: rgba(239,68,68,0.6);
+}
+
+/* ── Hover popup ── */
+.popup {
+  /* Sits directly to the right of the card, same top-aligned */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: 110px;
+  /* Wide enough for image + text without overflowing video */
+  width: 240px;
+  background: #ffffff;
+  border-radius: 0 12px 12px 0;
+  box-shadow:
+    4px 4px 20px rgba(0,0,0,0.28),
+    0 1px  6px rgba(0,0,0,0.12);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  /* Smooth reveal from left → right */
+  animation: popupIn 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: left center;
+  /* Subtle top border accent */
+  border-top: 3px solid #7c3aed;
+}
+.popup:hover {
+  box-shadow:
+    5px 5px 28px rgba(0,0,0,0.36),
+    0 2px  8px rgba(0,0,0,0.16);
+}
+
+@keyframes popupIn {
+  from { opacity: 0; transform: scaleX(0.7) translateX(-8px); }
+  to   { opacity: 1; transform: scaleX(1)   translateX(0); }
+}
+
+/* Product image inside popup — left column */
+.popupImg {
+  width: 90px;
+  height: 110px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #f8f6ff;
+}
+.popupImgEl {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.32s ease;
+}
+.popup:hover .popupImgEl { transform: scale(1.06); }
+.popupImgFallback {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: #f4f2ff;
+}
+
+/* Text body — right column */
+.popupBody {
+  flex: 1;
+  padding: 10px 12px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+}
+.popupName {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #18103a;
+  line-height: 1.3;
+  /* Max 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.popupDesc {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  color: #5b4e8a;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.popupPrice {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: #7c3aed;
+}
+.shopNow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #7c3aed;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  margin-top: 2px;
+  display: inline-block;
+}
+.popup:hover .shopNow { color: #5b21b6; }

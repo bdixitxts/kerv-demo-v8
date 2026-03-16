@@ -1,0 +1,99 @@
+.carouselWrapper {
+  position: relative;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px 0 14px;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 12px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.headerLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.badge {
+  background: var(--accent-dim);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  color: #7c3aed;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+
+.navBtns {
+  display: flex;
+  gap: 4px;
+}
+
+.navBtn {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.navBtn:hover {
+  border-color: #7c3aed;
+  color: #7c3aed;
+  background: var(--accent-dim);
+}
+
+.scrollTrack {
+  overflow-x: auto;
+  padding: 4px 16px 4px;
+  scrollbar-width: none;
+}
+.scrollTrack::-webkit-scrollbar { display: none; }
+
+.scrollInner {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+}
+
+/* Edge fade */
+.fadeLeft, .fadeRight {
+  position: absolute;
+  top: 54px;
+  bottom: 0;
+  width: 32px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.fadeLeft {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-raised), transparent);
+}
+
+.fadeRight {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-raised), transparent);
+}
