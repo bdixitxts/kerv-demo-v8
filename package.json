@@ -13,5 +13,6 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.0"
-  }
+  },
+  "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend -- --host\""
 }
