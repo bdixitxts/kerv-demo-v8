@@ -99,6 +99,7 @@ export default function VideoCardStack({ activeDetections = [], productMatches =
                 ? <img src={det.cropImage} alt={det.label} className={styles.cardImg} draggable={false} />
                 : <div className={styles.cardFallback}>
                     <span className={styles.cardIcon}>{det.categoryIcon || '◈'}</span>
+                    <span className={styles.cardFallbackLabel}>{det.label}</span>
                   </div>
               }
 
@@ -123,8 +124,8 @@ export default function VideoCardStack({ activeDetections = [], productMatches =
                 <div className={styles.popupImg}>
                   {det.cropImage
                     ? <img src={det.cropImage} alt={det.label} className={styles.popupImgEl} draggable={false} />
-                    : <div className={styles.popupImgFallback}>
-                        <span style={{ fontSize: 24 }}>{det.categoryIcon || '◈'}</span>
+                    : <div className={styles.popupImgFallback} style={{ background: `${det.categoryColor || '#7c3aed'}12` }}>
+                        <span style={{ fontSize: 28 }}>{det.categoryIcon || '◈'}</span>
                       </div>
                   }
                 </div>

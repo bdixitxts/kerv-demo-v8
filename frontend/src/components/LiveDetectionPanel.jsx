@@ -89,8 +89,9 @@ export default function LiveDetectionPanel({
                 <div className={styles.liveCardImg}>
                   {det.cropImage
                     ? <img src={det.cropImage} alt={det.label} className={styles.liveCardImgEl} />
-                    : <div className={styles.liveCardImgFallback} style={{ background: `${catColor}18` }}>
-                        <span style={{ fontSize: 22 }}>{det.categoryIcon || '◈'}</span>
+                    : <div className={styles.liveCardImgFallback} style={{ background: `${catColor}14` }}>
+                        <span style={{ fontSize: 26 }}>{det.categoryIcon || '◈'}</span>
+                        <span style={{ fontSize: 9, color: catColor, fontWeight: 700, textTransform: 'capitalize', marginTop: 2 }}>{det.label}</span>
                       </div>
                   }
                   {/* Live pulse dot */}
@@ -151,8 +152,9 @@ export default function LiveDetectionPanel({
                 <div className={styles.tlThumb}>
                   {det.cropImage
                     ? <img src={det.cropImage} alt={det.label} className={styles.tlThumbImg} />
-                    : <div className={styles.tlThumbFallback} style={{ background: `${catColor}18` }}>
-                        <span style={{ fontSize: 13 }}>{det.categoryIcon}</span>
+                    : <div className={styles.tlThumbFallback} style={{ background: `${catColor}14`, flexDirection: 'column', gap: 1 }}>
+                        <span style={{ fontSize: 14 }}>{det.categoryIcon || '◈'}</span>
+                        <span style={{ fontSize: 7, color: catColor, fontWeight: 700, textTransform: 'capitalize' }}>{det.label}</span>
                       </div>
                   }
                 </div>

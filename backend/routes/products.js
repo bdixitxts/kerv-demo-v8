@@ -41,21 +41,30 @@ const CATALOGUE = [
   { id: 'p021', label: 'tie',         category: 'apparel',     name: 'Silk Herringbone Tie',    brand: 'Ties.com', price: '$65',    url: 'https://ties.com',               tags: ['tie','necktie','apparel','shirt'] },
   { id: 'p022', label: 'suitcase',    category: 'travel',      name: 'Carry-On Hardshell',      brand: 'Away',     price: '$295',   url: 'https://awaytravel.com',         tags: ['suitcase','luggage','travel','bag'] },
   // Generic fallbacks per category
-  { id: 'p099', label: 'general',     category: 'general',     name: 'View on Amazon',          brand: 'Amazon',   price: 'Shop',   url: 'https://amazon.com',             tags: [] },
+  { id: 'p023', label: 'sports ball', category: 'sports',      name: 'Pro Training Ball',       brand: 'Wilson',       price: '$59',    url: 'https://wilson.com',          tags: ['ball','sport','football','soccer','sports ball','basketball'] },
+  { id: 'p024', label: 'keyboard',    category: 'technology',  name: 'MX Keys Mechanical',      brand: 'Logitech',     price: '$129',   url: 'https://logitech.com',        tags: ['keyboard','typing','mechanical'] },
+  { id: 'p025', label: 'suitcase',    category: 'travel',      name: 'Carry-On Hardshell',      brand: 'Away',         price: '$295',   url: 'https://awaytravel.com',      tags: ['suitcase','luggage','travel','bag','carry-on'] },
+  { id: 'p026', label: 'bicycle',     category: 'transport',   name: 'Gravel Bike GX 105',      brand: 'Trek',         price: '$2,299', url: 'https://trekbikes.com',       tags: ['bicycle','bike','cycling','transport'] },
+  { id: 'p027', label: 'handbag',     category: 'accessories', name: 'Structured Tote Bag',     brand: 'Coach',        price: '$295',   url: 'https://coach.com',           tags: ['handbag','tote','bag','purse','accessories'] },
+  { id: 'p028', label: 'cell phone',  category: 'technology',  name: 'iPhone 15 Pro',           brand: 'Apple',        price: '$999',   url: 'https://apple.com/iphone',    tags: ['cell phone','phone','smartphone','mobile'] },
+    { id: 'p099', label: 'general',     category: 'general',     name: 'View on Amazon',          brand: 'Amazon',   price: 'Shop',   url: 'https://amazon.com',             tags: [] },
 ];
 
 function matchProduct(label) {
   const lc = label.toLowerCase();
-  // Exact label match
+  // 1. Exact label match
   let hit = CATALOGUE.find(p => p.label === lc);
   if (hit) return hit;
-  // Tag match
+  // 2. Tag match (tags array)
   hit = CATALOGUE.find(p => p.tags.includes(lc));
   if (hit) return hit;
-  // Substring match
+  // 3. Substring match
   hit = CATALOGUE.find(p => lc.includes(p.label) || p.label.includes(lc));
   if (hit) return hit;
-  // Category fallback — find by category
+  // 4. Multi-word fuzzy: split label words and find any tag containing them
+  const words = lc.split(/\s+/);
+  hit = CATALOGUE.find(p => words.some(w => w.length > 3 && p.tags.some(t => t.includes(w))));
+  if (hit) return hit;
   return null;
 }
 

@@ -100,6 +100,8 @@
   position: relative;
   flex: 1;
   overflow: hidden;
+  /* Ensure stage always has height so overlay stacks are positioned correctly */
+  min-height: 280px;
 }
 
 /* Meta strip */
