@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3001;
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "http://172.16.60.57:5173"
+    "http://172.16.80.46:5173/"
   ],
   credentials: true
 }));
@@ -35,13 +35,13 @@ app.use('/compliance', complianceRoutes);
 
 app.get('/health', (req, res) => res.json({ status: 'ok', version: '3.0.0', ts: Date.now() }));
 
-// app.listen(PORT, () => {
-//   console.log(`\n  KERV v3 Backend → http://localhost:${PORT}`);
-//   console.log(`  Routes: /auth  /videos  /admin  /products  /compliance\n`);
-// });
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`KERV v3 Backend → http://localhost:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`\n  KERV v3 Backend → http://localhost:${PORT}`);
+  console.log(`  Routes: /auth  /videos  /admin  /products  /compliance\n`);
 });
+
+// app.listen(PORT, '0.0.0.0', () => {
+//   console.log(`KERV v3 Backend → http://localhost:${PORT}`);
+// });
 
 
