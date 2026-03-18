@@ -1,0 +1,62 @@
+[
+  {
+    "id": "fe97a455-3d7c-4e66-8017-fa8e938fa62c",
+    "filename": "1773661654011-u6e5qniogl.mp4",
+    "originalName": "test-vdo-5.mp4",
+    "uploadedBy": "923061f2-7518-465d-83a3-97daf0e00ae0",
+    "size": 110324805,
+    "status": "done",
+    "progress": 100,
+    "detectionCount": 37,
+    "uploadedAt": "2026-03-16T11:47:35.071Z",
+    "processedAt": "2026-03-16T11:49:40.254Z",
+    "metadataFile": "D:\\kerv-v8\\backend\\data\\metadata\\fe97a455-3d7c-4e66-8017-fa8e938fa62c.json",
+    "duration": 54.47,
+    "error": null
+  },
+  {
+    "id": "62c874d7-024c-4297-9bf7-f34698a681e1",
+    "filename": "1773661796551-dk6cpmeefuf.mp4",
+    "originalName": "test-vdo-3.mp4",
+    "uploadedBy": "923061f2-7518-465d-83a3-97daf0e00ae0",
+    "size": 20527626,
+    "status": "done",
+    "progress": 100,
+    "detectionCount": 48,
+    "uploadedAt": "2026-03-16T11:49:56.815Z",
+    "processedAt": "2026-03-16T11:50:40.975Z",
+    "metadataFile": "D:\\kerv-v8\\backend\\data\\metadata\\62c874d7-024c-4297-9bf7-f34698a681e1.json",
+    "duration": 95.14,
+    "error": null
+  },
+  {
+    "id": "11274414-7c38-4a81-a065-934296b11b7b",
+    "filename": "1773662887295-4v3c2b8p4d.mp4",
+    "originalName": "test-vdo-4.mp4",
+    "uploadedBy": "923061f2-7518-465d-83a3-97daf0e00ae0",
+    "size": 92125693,
+    "status": "done",
+    "progress": 100,
+    "detectionCount": 27,
+    "uploadedAt": "2026-03-16T12:08:08.356Z",
+    "processedAt": "2026-03-16T12:12:00.454Z",
+    "metadataFile": "D:\\kerv-v8\\backend\\data\\metadata\\11274414-7c38-4a81-a065-934296b11b7b.json",
+    "duration": 45,
+    "error": null
+  },
+  {
+    "id": "557ac3ea-eaff-4c87-9806-ef8c83c7610e",
+    "filename": "1773750281518-2tl84ag4wdi.mp4",
+    "originalName": "test-video.mp4",
+    "uploadedBy": "923061f2-7518-465d-83a3-97daf0e00ae0",
+    "size": 78594806,
+    "status": "uploaded",
+    "progress": 0,
+    "detectionCount": 0,
+    "uploadedAt": "2026-03-17T12:24:45.960Z",
+    "processedAt": null,
+    "metadataFile": null,
+    "duration": null,
+    "error": null
+  }
+]

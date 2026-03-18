@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
-const API = import.meta.env.VITE_API_URL || 'http://172.16.60.57:3001';
+//const API = import.meta.env.VITE_API_URL || 'http://172.16.60.57:3001';
+const API = import.meta.env.VITE_API_URL || 'http://172.16.80.46:3001';
+console.log("API URL:", API);
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {

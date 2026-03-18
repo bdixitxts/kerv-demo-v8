@@ -1,0 +1,20 @@
+[
+  {
+    "id": "923061f2-7518-465d-83a3-97daf0e00ae0",
+    "email": "admin@kerv.demo",
+    "password": "$2a$10$CPY2OuuFQIL2PYfYtd49S.LOTOVWo7QD4gzEgWhhHva1lLt7GC0kS",
+    "name": "Admin User",
+    "role": "admin",
+    "createdAt": "2026-03-16T11:47:13.289Z",
+    "videosProcessed": 4
+  },
+  {
+    "id": "f92df6d6-0f17-49d2-b410-c6c22c288798",
+    "email": "viewer@kerv.demo",
+    "password": "$2a$10$ymfvgrogCS/BxbY7vDRtGuUOPtAlR0/mIy7A1RI3Q3NeTulJA26iS",
+    "name": "Demo Viewer",
+    "role": "viewer",
+    "createdAt": "2026-03-16T11:47:13.449Z",
+    "videosProcessed": 0
+  }
+]

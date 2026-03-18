@@ -2,7 +2,6 @@ node_modules/
 .env
 
 # backend runtime data
-backend/data/
 backend/uploads/
 
 # frontend build

@@ -1,0 +1,126 @@
+{
+  "videoId": "demo-video",
+  "videoDuration": 30,
+  "detections": [
+    {
+      "id": "det_001",
+      "time": 1.5,
+      "endTime": 4.0,
+      "label": "sneaker",
+      "confidence": 0.94,
+      "bbox": [120, 200, 280, 160],
+      "category": "footwear",
+      "productInfo": {
+        "name": "Air Max Runner",
+        "brand": "SportFlow",
+        "price": "$129.99",
+        "description": "Premium athletic sneaker with responsive cushioning"
+      }
+    },
+    {
+      "id": "det_002",
+      "time": 3.0,
+      "endTime": 7.5,
+      "label": "backpack",
+      "confidence": 0.88,
+      "bbox": [380, 150, 200, 220],
+      "category": "accessories",
+      "productInfo": {
+        "name": "Urban Trek Pack",
+        "brand": "NomadGear",
+        "price": "$89.99",
+        "description": "30L waterproof backpack for city and trail"
+      }
+    },
+    {
+      "id": "det_003",
+      "time": 6.0,
+      "endTime": 10.0,
+      "label": "jacket",
+      "confidence": 0.91,
+      "bbox": [200, 100, 240, 300],
+      "category": "apparel",
+      "productInfo": {
+        "name": "WindShield Pro",
+        "brand": "ApexWear",
+        "price": "$199.99",
+        "description": "Lightweight windproof jacket with packable design"
+      }
+    },
+    {
+      "id": "det_004",
+      "time": 9.5,
+      "endTime": 14.0,
+      "label": "sunglasses",
+      "confidence": 0.87,
+      "bbox": [300, 80, 140, 80],
+      "category": "accessories",
+      "productInfo": {
+        "name": "Polarex Sport",
+        "brand": "VisionMax",
+        "price": "$74.99",
+        "description": "UV400 polarized lenses with wraparound fit"
+      }
+    },
+    {
+      "id": "det_005",
+      "time": 13.0,
+      "endTime": 17.5,
+      "label": "water bottle",
+      "confidence": 0.96,
+      "bbox": [450, 250, 80, 180],
+      "category": "gear",
+      "productInfo": {
+        "name": "HydroFlex 32oz",
+        "brand": "PureFlow",
+        "price": "$34.99",
+        "description": "Vacuum insulated stainless steel water bottle"
+      }
+    },
+    {
+      "id": "det_006",
+      "time": 16.0,
+      "endTime": 21.0,
+      "label": "watch",
+      "confidence": 0.89,
+      "bbox": [160, 280, 100, 100],
+      "category": "electronics",
+      "productInfo": {
+        "name": "TrackMaster Pro",
+        "brand": "ChronoFit",
+        "price": "$249.99",
+        "description": "GPS smartwatch with heart rate monitoring"
+      }
+    },
+    {
+      "id": "det_007",
+      "time": 20.0,
+      "endTime": 25.0,
+      "label": "headphones",
+      "confidence": 0.93,
+      "bbox": [280, 60, 160, 120],
+      "category": "electronics",
+      "productInfo": {
+        "name": "SoundWave ANC",
+        "brand": "AudioPulse",
+        "price": "$179.99",
+        "description": "Active noise cancelling wireless headphones"
+      }
+    },
+    {
+      "id": "det_008",
+      "time": 24.0,
+      "endTime": 29.5,
+      "label": "yoga mat",
+      "confidence": 0.85,
+      "bbox": [50, 320, 500, 60],
+      "category": "fitness",
+      "productInfo": {
+        "name": "ZenGrip Pro",
+        "brand": "FlowStudio",
+        "price": "$54.99",
+        "description": "6mm non-slip natural rubber yoga mat"
+      }
+    }
+  ]
+}
